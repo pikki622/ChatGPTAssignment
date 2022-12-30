@@ -36,12 +36,7 @@ def get_answers():
     questions = pytesseract.image_to_string(image, config=tessdata_dir_config)
     r2 = answer(question=questions)
     os.remove(f'questions/{randomname}.png')
-    # seperate the all the data into an array
-    answers = []
-    for i in r2.split('\n'):
-        answers.append(i)
-        
-    
+    answers = list(r2.split('\n'))
     return jsonify({'response': answers})
 
 
